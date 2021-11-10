@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return "你好";
+    return "你好121";
     return view('welcome');
 });
