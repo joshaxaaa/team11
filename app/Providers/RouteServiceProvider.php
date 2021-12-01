@@ -42,6 +42,8 @@ class RouteServiceProvider extends ServiceProvider
                 ->middleware('api')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/api.php'));
+            Route::pattern('laptop','[0-9]+');
+            Route::pattern('vendor','[0-9]+');
 
             Route::middleware('web')
                 ->namespace($this->namespace)

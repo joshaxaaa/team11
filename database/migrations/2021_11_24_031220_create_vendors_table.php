@@ -13,11 +13,11 @@ class CreateVendorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendor', function (Blueprint $table) {
+        Schema::create('vendors', function (Blueprint $table) {
             $table->id();
-            $table->string('vendor')->comment('廠商');
-           // $table->string('phone_number')->comment('客服電話');
-           // $table->timestamps();
+           $table->string('vendor')->comment('廠商');
+           $table->integer('phone_number')->comment('客服電話');
+            $table->timestamps();
         });
     }
 

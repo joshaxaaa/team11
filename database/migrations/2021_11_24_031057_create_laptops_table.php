@@ -12,7 +12,7 @@ class CreateLaptopsTable extends Migration
      * @return void
      */
     public function up()
-    {
+     {
         Schema::create('laptops', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('筆電');
@@ -20,7 +20,7 @@ class CreateLaptopsTable extends Migration
             $table->string('graphics_card')->comment('顯示卡');
             $table->tinyInteger('size')->unsigned()->comment('尺寸');
             $table->string('cpu')->comment('中央處理器');
-            $table->tinyInteger('price')->unsigned()->comment('價格');
+            $table->integer('price')->unsigned()->comment('價格');
             $table->timestamps();
 
 

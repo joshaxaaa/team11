@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\laptopscontroller;
+use App\Http\Controllers\vendorscontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return "你好121";
-    return view('welcome');
-});
+Route::resource("laptops", laptopscontroller::class);
+Route::resource("vendors", vendorscontroller::class);
