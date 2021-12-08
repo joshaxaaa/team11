@@ -43,7 +43,7 @@ class VendorsTableSeeder extends Seeder
     public function run()
     {
         for ($i=0; $i<11; $i++) {
-            $name = $this->generateRandomName();
+            $name= $this->generateRandomName();
             $vendors= $this->generateRandomZone();
             $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
 

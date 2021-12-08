@@ -9,14 +9,24 @@
     <tr>
         <th>編號</th>
         <th>廠商</th>
-        <th>客服電話</th>
+        <th>操作1</th>
+        <th>操作2</th>
 
     </tr>
     @foreach($vendors as $vendor)
         <tr>
             <td>{{$vendor->id}}</td>
             <td>{{$vendor->vendor}}</td>
-            <td>{{$vendor->phone_number}}</td>
+            <td>
+                <a href="vendors/{{$vendor->id}}">
+                    詳細
+                </a>
+            <td>
+                <a href="vendors/{{$vendor->id}}/edit">
+                    修改
+                </a>
+            </td>
+            </td>
         </tr>
     @endforeach
 </table>
