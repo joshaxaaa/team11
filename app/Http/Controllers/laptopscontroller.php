@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Laptop;
+use App\Models\Vendor;
 use Database\Seeders\LaptopsTableSeeder;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,7 @@ class laptopscontroller extends Controller
     public function index()
     {
         //
-        //$laptops=Laptop::all()->toArray();
-        $laptops = laptop::all();
+        $laptops = laptop::all()->sortBy('vid');
         return view('laptops.index')->with(['laptops' => $laptops]);
     }
 
@@ -29,7 +29,8 @@ class laptopscontroller extends Controller
      */
     public function create()
     {
-        //
+        $vendors = vendor::all()->sortBy('id');
+        return view('laptops.create')->with(['vendors' => $vendors]);
     }
 
     /**
@@ -40,7 +41,24 @@ class laptopscontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->input('name');
+        $vid = $request->input('vid');
+        $graphics_card = $request->input('graphics_card');
+        $size = $request->input('size');
+        $cpu = $request->input('cpu');
+        $price = $request->input('price');
+
+        Laptop::create(
+            [
+                'name' => $name,
+                'vid' => $vid,
+                'graphics_card' => $graphics_card,
+                'size' => $size,
+                'cpu' => $cpu,
+                'price' => $price,
+            ]
+        );
+        return redirect('laptops');
     }
 
     /**
@@ -66,7 +84,8 @@ class laptopscontroller extends Controller
     {
         //
         $laptop = Laptop::findOrFail($id);
-        return view('laptops.edit')->with(['laptop' => $laptop]);
+        $vendors = Vendor::all()->sortBy('id');
+        return view('laptops.edit')->with(['laptop' => $laptop, 'vendors' => $vendors]);
     }
 
     /**
@@ -101,6 +120,62 @@ class laptopscontroller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $laptops = Laptop::findOrFail($id);
+        $laptops->delete();
+        return redirect('laptops');
+    }
+
+    public function highprice()
+    {
+        $laptops = Laptop::highprice()->get();
+        return view('laptops.index', ['laptops' => $laptops]);
+    }
+
+    public function api_laptops()
+    {
+        return Laptop::all();
+    }
+
+    public function api_update(Request $request)
+    {
+        $laptop = Laptop::find($request->input('id'));
+        if ($laptop == null) {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+        $laptop->name = $request->input('name');
+        $laptop->vid = $request->input('vid');
+        $laptop->graphics_card = $request->input('graphics_card');
+        $laptop->size = $request->input('size');
+        $laptop->cpu = $request->input('cpu');
+        $laptop->price = $request->input('price');
+
+        if ($laptop->save()) {
+            return response()->json([
+                'status' => 1,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+    }
+
+    public function api_delete(Request $request)
+    {
+        $laptop = Laptop::find($request->input('id'));
+
+        if ($laptop == null) {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+
+        if ($laptop->delete()) {
+            return response()->json([
+                'status' => 1,
+            ]);
+        }
     }
 }

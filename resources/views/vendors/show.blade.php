@@ -1,9 +1,8 @@
-<html>
-<head>
-    <meta charset="UTF-8"/>
-    <title>顯示單一廠商的詳細資料</title>
-</head>
-<body>
+@extends('app')
+
+@section('title', '廠商完整資料')
+
+@section('laptops_contents')
 <h1>顯示單一廠商的詳細資料 </h1>
 <table border="1">
     <tr>
@@ -19,5 +18,4 @@
         <td>{{ $vendor->phone_number }}</td>
     </tr>
 </table>
-</body>
-</html>
+@endsection

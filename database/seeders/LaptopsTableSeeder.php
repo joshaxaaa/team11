@@ -96,7 +96,7 @@ class LaptopsTableSeeder extends Seeder
 
             DB::table('laptops')->insert([
                 'name' => $name,
-                'vid' => rand(1, 11),
+                'vid' => rand(1, 10),
                 'graphics_card' => $graphicscard,
                 'size' => rand(13,17),
                 'cpu' => $cpu,

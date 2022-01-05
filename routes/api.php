@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('register', [AuthController::class, 'register']);
+
+Route::post('login',  [AuthController::class, 'login']);
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    // 查詢所有廠商
+    Route::get('vendors',[\App\Http\Controllers\vendorscontroller::class,'api_vendors']);
+    // 修改指定廠商
+    Route::patch('vendors',[\App\Http\Controllers\vendorscontroller::class,'api_update']);
+    // 刪除指定廠商
+    Route::delete('vendors',[\App\Http\Controllers\vendorscontroller::class,'api_delete']);
+    // 查詢所有筆電
+    Route::get('laptops',[\App\Http\Controllers\laptopscontroller::class,'api_laptops']);
+    // 修改指定筆電
+    Route::patch('laptops',[\App\Http\Controllers\laptopscontroller::class,'api_update']);
+    // 刪除指定筆電
+    Route::delete('laptops',[\App\Http\Controllers\laptopscontroller::class,'api_delete']);
+
 });
+

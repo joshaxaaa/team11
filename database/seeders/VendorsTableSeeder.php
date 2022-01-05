@@ -34,7 +34,7 @@ class VendorsTableSeeder extends Seeder
         $name = $first_name . " ". $last_name;
         return $name;
     }
-    public function generateRandomzone() {
+    public function generateRandomvendor() {
         $vendors = ['ASUS', 'ACER','MSI','AORUS','XPG','Lenovo','DELL','HP','Razer','APPLE'];
         return $vendors[rand(0, count($vendors)-1)];
     }
@@ -44,7 +44,7 @@ class VendorsTableSeeder extends Seeder
     {
         for ($i=0; $i<11; $i++) {
             $name= $this->generateRandomName();
-            $vendors= $this->generateRandomZone();
+            $vendors= $this->generateRandomvendor();
             $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
 
             DB::table('vendors')->insert([

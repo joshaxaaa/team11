@@ -12,18 +12,17 @@ class CreateLaptopsTable extends Migration
      * @return void
      */
     public function up()
-     {
+    {
         Schema::create('laptops', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('筆電');
-            $table->integer('vid')->unsigned()->comment('廠商');
+            $table->foreignId('vid')->unsigned()->comment('廠商');
             $table->string('graphics_card')->comment('顯示卡');
-            $table->tinyInteger('size')->unsigned()->comment('尺寸');
+            $table->integer('size')->unsigned()->comment('尺寸');
             $table->string('cpu')->comment('中央處理器');
             $table->integer('price')->unsigned()->comment('價格');
             $table->timestamps();
-
-
+            $table->foreign('vid')->references('id')->on('vendors')->onDelete('cascade');
         });
     }
 

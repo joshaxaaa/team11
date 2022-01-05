@@ -29,7 +29,7 @@ class vendorscontroller extends Controller
      */
     public function create()
     {
-        //
+        return view('vendors.create');
     }
 
     /**
@@ -40,7 +40,16 @@ class vendorscontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vendor = $request->input('vendor');
+        $phone_number = $request->input('phone_number');
+
+        Vendor::create(
+            [
+                'vendor' => $vendor,
+                'phone_number' => $phone_number,
+            ]
+        );
+        return redirect('vendors');
     }
 
     /**
@@ -96,5 +105,53 @@ class vendorscontroller extends Controller
     public function destroy($id)
     {
         //
+        $vendors = Vendor::findOrFail($id);
+        $vendors->delete();
+        return redirect('vendors');
+    }
+
+    public function api_vendors()
+    {
+        return Vendor::all();
+    }
+
+    public function api_update(Request $request)
+    {
+        $vendor = Vendor::find($request->input('id'));
+        if ($vendor == null) {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+
+        $vendor->vendor = $request->input('vendor');
+        $vendor->phone_number = $request->input('phone_number');
+        if ($vendor->save()) {
+            return response()->json([
+                'status' => 1,
+            ]);
+        } else {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+    }
+
+    public function api_delete(Request $request)
+    {
+        $vendor = Vendor::find($request->input('id'));
+
+        if ($vendor == null) {
+            return response()->json([
+                'status' => 0,
+            ]);
+        }
+
+        if ($vendor->delete()) {
+            return response()->json([
+                'status' => 1,
+            ]);
+        }
+
     }
 }

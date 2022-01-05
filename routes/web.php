@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('laptops/highprice', [laptopscontroller::class, 'highprice'])->name('laptops.highprice');
 Route::resource("laptops", laptopscontroller::class);
 Route::resource("vendors", vendorscontroller::class);
+

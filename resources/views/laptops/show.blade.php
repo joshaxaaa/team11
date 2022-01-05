@@ -1,9 +1,8 @@
-<html>
-<head>
-    <meta charset="UTF-8"/>
-    <title>顯示單一筆電的詳細資料</title>
-</head>
-<body>
+@extends('app')
+
+@section('title', '顯示電腦完整資料')
+
+@section('laptops_contents')
 <h1>顯示單一筆電的詳細資料 </h1>
 <table border="1">
     <tr>
@@ -34,6 +33,7 @@
         <td>價格</td>
         <td>{{ $laptop->price }}</td>
     </tr>
-</table>
+    </table>
 </body>
 </html>
+@endsection

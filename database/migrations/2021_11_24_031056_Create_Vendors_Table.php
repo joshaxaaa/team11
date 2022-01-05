@@ -15,8 +15,8 @@ class CreateVendorsTable extends Migration
     {
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
-           $table->string('vendor')->comment('廠商');
-           $table->integer('phone_number')->comment('客服電話');
+            $table->string('vendor')->comment('廠商');
+            $table->string('phone_number')->comment('客服電話');
             $table->timestamps();
         });
     }
