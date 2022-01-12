@@ -9,7 +9,7 @@
     </a>
 </th>&ensp;
 <th>
-    <a href="laptops/create">
+    <a href="{{route('laptops.create')}}">
         新增筆電
     </a>
 </th>

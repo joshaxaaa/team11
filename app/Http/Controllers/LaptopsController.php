@@ -8,7 +8,7 @@ use App\Models\Vendor;
 use Database\Seeders\LaptopsTableSeeder;
 use Illuminate\Http\Request;
 
-class laptopscontroller extends Controller
+class LaptopsController extends Controller
 {
     /**
      * Display a listing of the resource.

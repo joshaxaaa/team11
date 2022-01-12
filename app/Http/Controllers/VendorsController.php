@@ -7,7 +7,7 @@ use App\Models\Laptop;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 
-class vendorscontroller extends Controller
+class VendorsController extends Controller
 {
     /**
      * Display a listing of the resource.
