@@ -16,16 +16,56 @@
             <td>廠商</td>
             <td>
                 <select name="vendor" required>
-                    <option value="ASUS">ASUS</option>
-                    <option value="ACER">ACER</option>
-                    <option value="MSI">MSI</option>
-                    <option value="AORUS">AORUS</option>
-                    <option value="XPG">XPG</option>
-                    <option value="Lenovo">Lenovo</option>
-                    <option value="DELL">DELL</option>
-                    <option value="HP">HP</option>
-                    <option value="Razer">Razer</option>
-                    <option value="APPLE">APPLE</option>
+                    @if($vendor->vendor=="ASUS")
+                        <option value="ASUS" selected>ASUS</option>
+                    @else
+                        <option value="ASUS">ASUS</option>
+                    @endif
+                        @if($vendor->vendor=="ACER")
+                            <option value="ACER" selected>ACER</option>
+                        @else
+                            <option value="ACER">ACER</option>
+                        @endif
+                        @if($vendor->vendor=="MSI")
+                            <option value="MSI" selected>MSI</option>
+                        @else
+                            <option value="MSI">MSI</option>
+                        @endif
+                        @if($vendor->vendor=="AORUS")
+                            <option value="AORUS" selected>AORUS</option>
+                        @else
+                            <option value="AORUS">AORUS</option>
+                        @endif
+                        @if($vendor->vendor=="XPG")
+                            <option value="XPG" selected>XPG</option>
+                        @else
+                            <option value="XPG">XPG</option>
+                        @endif
+                        @if($vendor->vendor=="Lenovo")
+                            <option value="Lenovo" selected>Lenovo</option>
+                        @else
+                            <option value="Lenovo">Lenovo</option>
+                        @endif
+                        @if($vendor->vendor=="HP")
+                            <option value="HP" selected>HP</option>
+                        @else
+                            <option value="HP">HP</option>
+                        @endif
+                        @if($vendor->vendor=="DELL")
+                            <option value="DELL" selected>DELL</option>
+                        @else
+                            <option value="DELL">DELL</option>
+                        @endif
+                        @if($vendor->vendor=="Razer")
+                            <option value="Razer" selected>Razer</option>
+                        @else
+                            <option value="Razer">Razer</option>
+                        @endif
+                        @if($vendor->vendor=="APPLE")
+                            <option value="APPLE" selected>APPLE</option>
+                        @else
+                            <option value="APPLE">APPLE</option>
+                        @endif
                 </select>
             </td>
         </tr>
