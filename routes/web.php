@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('laptops');
 });
+Route::get('/', function () {
+    return redirect('vendors');
+});
 Route::get('laptops/highprice', [LaptopsController::class, 'highprice'])->name('laptops.highprice');
 Route::resource("laptops", LaptopsController::class);
 Route::resource("vendors", VendorsController::class);

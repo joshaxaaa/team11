@@ -32,21 +32,13 @@
             <td>{{$laptop->vendor->vendor}}</td>
             <td>{{$laptop->size}}</td>
             <td>{{$laptop->price}}</td>
+            <td><a href="{{ route('laptops.show', ['laptop'=>$laptop->id]) }}">詳細</a></td>
+            <td><a href="{{ route('laptops.edit', ['laptop'=>$laptop->id]) }}">修改</a></td>
             <td>
-                <a href="laptops/{{$laptop->id}}">
-                    詳細
-                </a>
-            </td>
-            <td>
-                <a href="laptops/{{$laptop->id}}/edit">
-                    修改
-                </a>
-            </td>
-            <td>
-                <form method="post" action="laptops/{{$laptop->id}}">
-                    @csrf
+                <form method="post" action="laptops/{{ $laptop->id }}">
+                @csrf <!-- CSRF = Cross-Site Request Forgery-->
                     @method("delete")
-                    <input type="submit" value="刪除">
+                    <input type="submit" value="刪除"/>
                 </form>
             </td>
         </tr>

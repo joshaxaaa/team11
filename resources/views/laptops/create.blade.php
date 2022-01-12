@@ -4,7 +4,7 @@
 
 @section('laptops_contents')
 <h1>筆電的新增表單</h1>
-<form method="post" action="/laptops/laptops/">
+<form method="post" action="/laptops">
     @csrf
     <table border="1">
         <tr>

@@ -4,7 +4,7 @@
 
 @section('laptops_contents')
 <th>
-    <a href="{{route('laptops.create')}}">
+    <a href="{{route('vendors.create')}}">
         新增廠商
     </a>
 </th>
